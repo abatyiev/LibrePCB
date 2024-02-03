@@ -698,7 +698,7 @@ QByteArray OccModel::minifyStep(const QByteArray& content) {
       lines.mid(dataStart + 1, dataEnd - dataStart - 1)
           .join("")
           .replace(re, "0.\\1")
-          .split(';', QString::SkipEmptyParts);
+          .split(';', Qt::SkipEmptyParts);
 
   // Parse data into key-value structure.
   // Note: The last item of the QList<int> is not part of the data, but only

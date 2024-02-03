@@ -59,13 +59,13 @@ QString MessageLogger::Message::toRichText(bool colored,
  ******************************************************************************/
 
 MessageLogger::MessageLogger(bool record, QObject* parent) noexcept
-  : QObject(parent), mMutex(QMutex::Recursive), mParent(), mRecord(record) {
+  : QObject(parent), mMutex(), mParent(), mRecord(record) {
 }
 
 MessageLogger::MessageLogger(MessageLogger* parentLogger, const QString& group,
                              bool record, QObject* parent) noexcept
   : QObject(parent),
-    mMutex(QMutex::Recursive),
+    mMutex(),
     mParent(parentLogger),
     mRecord(record) {
   if (!group.isEmpty()) {

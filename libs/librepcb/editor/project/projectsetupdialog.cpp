@@ -223,7 +223,7 @@ void ProjectSetupDialog::load() noexcept {
   mUi->edtProjectAuthor->setText(mProject.getAuthor());
   mUi->edtProjectVersion->setText(*mProject.getVersion());
   mUi->lblProjectCreated->setText(
-      mProject.getCreated().toString(Qt::DefaultLocaleLongDate));
+      mProject.getCreated().toString(QLocale().dateFormat()));
 
   // Tab: Locales & Norms
   mUi->lstLocaleOrder->clear();
@@ -300,9 +300,11 @@ bool ProjectSetupDialog::apply() noexcept {
       }
 
       // Remove no longer existing net classes.
+      const auto values1 = mProject.getCircuit().getNetClasses().values();
+      const auto values2 = items.values();
       foreach (NetClass* netClass,
-               mProject.getCircuit().getNetClasses().values().toSet() -
-                   items.values().toSet()) {
+               QSet<librepcb::NetClass*>(values1.begin(), values1.end()) -
+	           QSet<librepcb::NetClass*>(values2.begin(), values2.end())) {
         transaction.append(new CmdNetClassRemove(*netClass));
       }
 

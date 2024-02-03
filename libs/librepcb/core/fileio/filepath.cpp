@@ -229,7 +229,7 @@ FilePath FilePath::getApplicationTempPath() noexcept {
 
 FilePath FilePath::getRandomTempPath() noexcept {
   QString random =
-      QString("%1_%2").arg(QDateTime::currentMSecsSinceEpoch()).arg(qrand());
+      QString("%1_%2").arg(QDateTime::currentMSecsSinceEpoch()).arg(rand());
   return getApplicationTempPath().getPathTo(random);
 }
 

@@ -60,7 +60,7 @@ public:
 
   // Constructors / Destructor
   AttributeListModel() = delete;
-  AttributeListModel(const AttributeListModel& other) noexcept;
+  AttributeListModel(const AttributeListModel& other) noexcept = default;
   explicit AttributeListModel(QObject* parent = nullptr) noexcept;
   ~AttributeListModel() noexcept;
 

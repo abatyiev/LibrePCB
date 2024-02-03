@@ -166,10 +166,8 @@ void NetworkRequestBase::executeRequest() noexcept {
   }
   connect(mReply.data(), &QNetworkReply::readyRead, this,
           &NetworkRequestBase::replyReadyReadSlot);
-  connect(mReply.data(),
-          static_cast<void (QNetworkReply::*)(QNetworkReply::NetworkError)>(
-              &QNetworkReply::error),
-          this, &NetworkRequestBase::replyErrorSlot);
+  connect(mReply.data(), &QNetworkReply::errorOccurred, this,
+          &NetworkRequestBase::replyErrorSlot);
   connect(mReply.data(), &QNetworkReply::sslErrors, this,
           &NetworkRequestBase::replySslErrorsSlot);
   connect(mReply.data(), &QNetworkReply::finished, this,

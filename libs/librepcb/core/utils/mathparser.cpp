@@ -53,8 +53,8 @@ MathParser::Result MathParser::parse(const QString& expression) const noexcept {
   try {
     mu::Parser parser;
     parser.SetArgSep(';');  // avoid conflict with other separators
-    parser.SetDecSep(mLocale.decimalPoint().toLatin1());
-    parser.SetThousandsSep(mLocale.groupSeparator().toLatin1());
+    parser.SetDecSep(mLocale.decimalPoint().front().toLatin1()); // FIXME: multibyte separators
+    parser.SetThousandsSep(mLocale.groupSeparator().front().toLatin1());
 #if defined(_UNICODE)
     parser.SetExpr(expression.toStdWString());
 #else

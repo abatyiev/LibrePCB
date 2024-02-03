@@ -72,7 +72,7 @@ BomOutputJobWidget::BomOutputJobWidget(Project& project,
   connect(mUi->edtCustomAttributes, &QLineEdit::textEdited, this,
           [this](QString text) {
             mJob->setCustomAttributes(
-                text.remove(" ").split(",", QString::SkipEmptyParts));
+                text.remove(" ").split(",", Qt::SkipEmptyParts));
           });
 
   // List custom boards.

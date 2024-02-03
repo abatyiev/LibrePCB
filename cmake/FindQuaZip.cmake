@@ -29,8 +29,8 @@ endif()
 #       (quazip -> quazip5) yourself. Or just use the bundled version. See also:
 #       https://github.com/LibrePCB/LibrePCB/pull/798#issuecomment-720167363
 
-find_package(QuaZip-Qt5)
-if(QuaZip-Qt5_FOUND)
+find_package(QuaZip-Qt${Qt_VERSION_MAJOR})
+if(QuaZip-Qt${Qt_VERSION_MAJOR}_FOUND)
   message(STATUS "Using system QuaZip 1.x")
 
   # Stop here, we're done

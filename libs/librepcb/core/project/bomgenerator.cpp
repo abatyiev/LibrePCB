@@ -85,7 +85,7 @@ std::shared_ptr<Bom> BomGenerator::generate(
     bool mount;
   };
   QList<ComponentItem> items;
-  int maxPartNumber = 1;
+  qsizetype maxPartNumber = 1;
   foreach (const ComponentInstance* cmpInst,
            mProject.getCircuit().getComponentInstances()) {
     ComponentItem item;

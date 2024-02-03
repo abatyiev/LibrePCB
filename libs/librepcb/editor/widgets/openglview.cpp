@@ -184,7 +184,7 @@ void OpenGlView::mouseMoveEvent(QMouseEvent* e) {
 
 void OpenGlView::wheelEvent(QWheelEvent* e) {
   mAnimation->stop();
-  mTransform.scale(qPow(sZoomStepFactor, e->delta() / qreal(120)));
+  mTransform.scale(qPow(sZoomStepFactor, e->angleDelta().y() / qreal(120)));
   mIdleTimeMs = 0;
   update();
 }
@@ -213,7 +213,7 @@ void OpenGlView::initializeGL() {
   } else {
     qCritical() << "Failed to initialize OpenGL!";
     foreach (const QString& line,
-             mProgram.log().split('\n', QString::SkipEmptyParts)) {
+             mProgram.log().split('\n', Qt::SkipEmptyParts)) {
       qCritical().noquote() << "OpenGL:" << line;
     }
     glClearColor(1, 0, 0, 1);

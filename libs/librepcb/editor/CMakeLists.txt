@@ -959,6 +959,7 @@ target_link_libraries(
           LibrePCB::EagleImport
           # Third party
           OpenGL::GLU
+          fontobene_qt5
 )
 target_link_libraries(
   librepcb_editor
@@ -968,21 +969,25 @@ target_link_libraries(
          Optional::Optional
          TypeSafe::TypeSafe
          # Qt
-         Qt5::Core
-         Qt5::Gui
-         Qt5::OpenGL
-         Qt5::PrintSupport
-         Qt5::Svg
-         Qt5::Network
-         Qt5::Widgets
+         Qt${Qt_VERSION_MAJOR}::Core
+         Qt${Qt_VERSION_MAJOR}::Gui
+         Qt${Qt_VERSION_MAJOR}::OpenGL
+         Qt${Qt_VERSION_MAJOR}::PrintSupport
+         Qt${Qt_VERSION_MAJOR}::Svg
+         Qt${Qt_VERSION_MAJOR}::Network
+         Qt${Qt_VERSION_MAJOR}::Widgets
 )
 if(BUILD_QTQUICK_TEST)
-  target_link_libraries(librepcb_editor PUBLIC Qt5::Quick Qt5::QuickControls2)
+  target_link_libraries(librepcb_editor PUBLIC Qt${Qt_VERSION_MAJOR}::Quick Qt${Qt_VERSION_MAJOR}::QuickControls2)
 endif()
 
 # Hoedown is only needed on Qt <5.14
-if(Qt5Core_VERSION_MAJOR EQUAL 5 AND Qt5Core_VERSION_MINOR LESS 14)
+if(Qt_VERSION_MAJOR EQUAL 5 AND Qt_VERSION_MINOR LESS 14)
   target_link_libraries(librepcb_editor PRIVATE Hoedown::Hoedown)
+endif()
+
+if(Qt_VERSION_MAJOR EQUAL 6)
+  target_link_libraries(librepcb_editor PUBLIC Qt6::OpenGLWidgets)
 endif()
 
 # Alias to namespaced variant

@@ -73,7 +73,7 @@ StatusBar::StatusBar(QWidget* parent) noexcept
   addPermanentWidget(mProgressBarPlaceHolder.data());
 
   // init
-  setFields(0);
+  setFields(librepcb::editor::StatusBar::Field{});
   updateAbsoluteCursorPosition();
   setProgressBarPercent(100);
 }

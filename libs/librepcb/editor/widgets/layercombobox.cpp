@@ -77,7 +77,7 @@ tl::optional<const Layer&> LayerComboBox::getCurrentLayer() const noexcept {
  ******************************************************************************/
 
 void LayerComboBox::setLayers(const QSet<const Layer*>& layers) noexcept {
-  QList<const Layer*> sorted = layers.toList();
+  QList<const Layer*> sorted{layers.begin(), layers.end()};
   std::sort(sorted.begin(), sorted.end(), &Layer::lessThan);
 
   blockSignals(true);

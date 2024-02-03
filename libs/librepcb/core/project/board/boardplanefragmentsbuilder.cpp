@@ -91,7 +91,7 @@ bool BoardPlaneFragmentsBuilder::startAsynchronously(
   if (auto data = createJob(board, layers)) {
     cancel();
     mFuture =
-        QtConcurrent::run(this, &BoardPlaneFragmentsBuilder::run, data, false);
+        QtConcurrent::run(&BoardPlaneFragmentsBuilder::run, this, data, false);
     mWatcher.setFuture(mFuture);
     return true;
   } else {

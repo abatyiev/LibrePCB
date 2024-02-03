@@ -81,8 +81,7 @@ TEST_F(ComponentTest, testUpgradeV01) {
   // Re-open.
   ASSERT_TRUE(
       FileUtils::readFile(mTmpDir.getPathTo(".librepcb-cmp"))
-          .startsWith(Application::getFileFormatVersion().toStr().toUtf8() %
-                      "\n"));
+          .startsWith((Application::getFileFormatVersion().toStr() + QStringLiteral("\n")).toUtf8()));
   { std::unique_ptr<Component> obj = Component::open(createDir()); }
 }
 

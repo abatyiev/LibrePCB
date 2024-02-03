@@ -59,7 +59,7 @@ public:
   // Constructors / Destructor
   ComponentSymbolVariantListModel() = delete;
   ComponentSymbolVariantListModel(
-      const ComponentSymbolVariantListModel& other) noexcept;
+      const ComponentSymbolVariantListModel& other) noexcept = default;
   explicit ComponentSymbolVariantListModel(QObject* parent = nullptr) noexcept;
   ~ComponentSymbolVariantListModel() noexcept;
 

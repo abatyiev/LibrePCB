@@ -183,7 +183,7 @@ using TraceList =
  *  Non-Member Functions
  ******************************************************************************/
 
-inline uint qHash(const TraceAnchor& key, uint seed) noexcept {
+inline uint qHash(const TraceAnchor& key, uint seed = 0) noexcept {
   QString s;
   if (tl::optional<Uuid> anchor = key.tryGetJunction()) {
     s += anchor->toStr();

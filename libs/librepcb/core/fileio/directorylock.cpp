@@ -90,7 +90,7 @@ DirectoryLock::LockStatus DirectoryLock::getStatus(
   // read the content of the lock file
   QString content =
       QString::fromUtf8(FileUtils::readFile(mLockFilePath));  // can throw
-  QStringList lines = content.split("\n", QString::KeepEmptyParts);
+  QStringList lines = content.split("\n", Qt::KeepEmptyParts);
   // check count of lines
   if (lines.count() < 6) {
     throw RuntimeError(__FILE__, __LINE__,

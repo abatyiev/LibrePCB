@@ -36,6 +36,7 @@
 
 #include <QtCore>
 #include <QtWidgets>
+#include <QOpenGLWidget>
 
 /*******************************************************************************
  *  Namespace

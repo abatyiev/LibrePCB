@@ -219,7 +219,7 @@ private:  // Data
   bool mIsWritable;
   DirectoryLock mLock;
   bool mRestoredFromAutosave;
-  mutable QMutex mMutex;
+  mutable QRecursiveMutex mMutex;
 
   // File system modifications
   QHash<QString, QByteArray> mModifiedFiles;

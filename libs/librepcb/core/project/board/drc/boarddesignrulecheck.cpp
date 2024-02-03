@@ -1132,9 +1132,9 @@ void BoardDesignRuleCheck::checkZones(int progressEnd) {
     const BI_Zone* boardZone;
     const BI_Device* device;
     const Zone* deviceZone;
-    const Path outline;
-    const QSet<const Layer*> layers;
-    const Zone::Rules rules;
+    Path outline;
+    QSet<const Layer*> layers;
+    Zone::Rules rules;
   };
   QVector<ZoneItem> zones;
   foreach (const BI_Zone* zone, mBoard.getZones()) {
@@ -1214,12 +1214,12 @@ void BoardDesignRuleCheck::checkZones(int progressEnd) {
       foreach (const Layer* layer, layers) {
         foreach (const PadGeometry& geometry,
                  pad.getGeometries().value(layer)) {
-          outlines += QSet<Path>::fromList(
-              transform.map(geometry.toOutlines()).toList());
+          const auto transformed = transform.map(geometry.toOutlines());
+          outlines += QSet<Path>(transformed.begin(), transformed.end());
         }
       }
       if (!outlines.isEmpty()) {
-        locations = outlines.toList().toVector();
+        locations = QVector<Path>(outlines.begin(), outlines.end());
         const QPainterPath areaPx = Path::toQPainterPathPx(locations, true);
         return zoneAreaPx.intersects(areaPx);
       }

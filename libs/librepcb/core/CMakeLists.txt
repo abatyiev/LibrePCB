@@ -530,13 +530,13 @@ target_link_libraries(
          Polyclipping::Polyclipping
          TypeSafe::TypeSafe
          # Qt
-         Qt5::Concurrent
-         Qt5::Core
-         Qt5::Gui
-         Qt5::Network
-         Qt5::PrintSupport
-         Qt5::Sql
-         Qt5::Svg
+         Qt${Qt_VERSION_MAJOR}::Concurrent
+         Qt${Qt_VERSION_MAJOR}::Core
+         Qt${Qt_VERSION_MAJOR}::Gui
+         Qt${Qt_VERSION_MAJOR}::Network
+         Qt${Qt_VERSION_MAJOR}::PrintSupport
+         Qt${Qt_VERSION_MAJOR}::Sql
+         Qt${Qt_VERSION_MAJOR}::Svg
          # Link with -lproc on SunOS / Solaris / Illumos
          # This is required for proc_get_psinfo
          $<$<STREQUAL:$<PLATFORM_ID>,SunOS>:proc>

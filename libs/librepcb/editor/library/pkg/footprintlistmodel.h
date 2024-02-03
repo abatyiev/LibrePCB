@@ -64,7 +64,7 @@ public:
 
   // Constructors / Destructor
   FootprintListModel() = delete;
-  FootprintListModel(const FootprintListModel& other) noexcept;
+  FootprintListModel(const FootprintListModel& other) noexcept = default;
   explicit FootprintListModel(QObject* parent = nullptr) noexcept;
   ~FootprintListModel() noexcept;
 

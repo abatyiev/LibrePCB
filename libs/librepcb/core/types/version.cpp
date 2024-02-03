@@ -102,7 +102,7 @@ tl::optional<Version> Version::tryFromString(const QString& str) noexcept {
   QVector<uint> numbers;
   // split and convert to integer
   QStringList splitted =
-      str.split('.', QString::KeepEmptyParts, Qt::CaseSensitive);
+      str.split('.', Qt::KeepEmptyParts, Qt::CaseSensitive);
   foreach (const QString& numberStr, splitted) {
     bool ok = false;
     uint number = numberStr.toUInt(&ok);

@@ -29,6 +29,7 @@
 #include "../types/length.h"
 #include "../types/ratio.h"
 
+#include <fontobene-qt5/font.h>
 #include <QtCore>
 
 /*******************************************************************************

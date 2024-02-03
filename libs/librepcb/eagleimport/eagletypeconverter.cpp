@@ -71,7 +71,7 @@ QString EagleTypeConverter::convertElementDescription(const QString& d) {
   doc.setHtml(QString(d).replace("\n", "<br/>"));
   return doc.toPlainText()
       .trimmed()
-      .split("\n", QString::SkipEmptyParts)
+      .split("\n", Qt::SkipEmptyParts)
       .join("\n");
 }
 
@@ -123,11 +123,11 @@ QString EagleTypeConverter::convertInversionSyntax(const QString& s) noexcept {
   bool inputOverlined = false;
   bool outputOverlined = false;
   for (int i = 0; i < s.count(); ++i) {
-    if (s.at(i) == "!") {
+    if (s.at(i) == '!') {
       inputOverlined = !inputOverlined;
       continue;
     }
-    if (s.at(i) == "/") {
+    if (s.at(i) == '/') {
       outputOverlined = false;
     }
     if (inputOverlined != outputOverlined) {
@@ -322,7 +322,7 @@ QHash<const Layer*, const Layer*> EagleTypeConverter::convertLayerSetup(
   QString tmp = s;
   tmp.replace(QRegularExpression("[:\\*+\\(\\)\\[\\]]"), " ");
   QSet<int> numbers;
-  foreach (const QString& numberStr, tmp.split(" ", QString::SkipEmptyParts)) {
+  foreach (const QString& numberStr, tmp.split(" ", Qt::SkipEmptyParts)) {
     const int id = numberStr.toInt();
     if ((id < 1) || (id > 16)) {
       throw RuntimeError(__FILE__, __LINE__,

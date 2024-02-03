@@ -45,11 +45,11 @@ QVector<std::pair<int, int>> OverlineMarkupParser::extract(
   QVector<std::pair<int, int>> spans;
   int spanStart = -1;
   for (int i = 0; i < inputLength; ++i) {
-    if (input.midRef(i, 2) == "!!") {
+    if (input.mid(i, 2) == "!!") {
       // Substitutte '!!' by '!'.
       output.append('!');
       ++i;
-    } else if (input.midRef(i, 2) == "!/") {
+    } else if (input.mid(i, 2) == "!/") {
       // Do not end overline if '/' is prefixed with '!'.
       if (spanStart < 0) {
         spanStart = output.length();

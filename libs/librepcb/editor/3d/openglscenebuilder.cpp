@@ -72,7 +72,7 @@ OpenGlSceneBuilder::~OpenGlSceneBuilder() noexcept {
 
 void OpenGlSceneBuilder::start(std::shared_ptr<SceneData3D> data) noexcept {
   cancel();
-  mFuture = QtConcurrent::run(this, &OpenGlSceneBuilder::run, data);
+  mFuture = QtConcurrent::run(&OpenGlSceneBuilder::run, this, data);
 }
 
 bool OpenGlSceneBuilder::isBusy() const noexcept {
@@ -277,7 +277,8 @@ void OpenGlSceneBuilder::run(std::shared_ptr<SceneData3D> data) noexcept {
     }
 
     // Remove all no longer existing devices.
-    foreach (const Uuid& uuid, mDevices.keys().toSet() - deviceUuids) {
+    const auto keys = mDevices.keys();
+    foreach (const Uuid& uuid, QSet<Uuid>(keys.begin(), keys.end()) - deviceUuids) {
       foreach (auto obj, mDevices.take(uuid)) {
         emit objectRemoved(obj);
       }

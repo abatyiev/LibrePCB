@@ -26,6 +26,7 @@
 #include <QtCore>
 #include <QtOpenGL>
 #include <QtWidgets>
+#include <QOpenGLWidget>
 
 #include <memory>
 

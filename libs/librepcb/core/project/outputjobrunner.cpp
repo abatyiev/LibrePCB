@@ -252,9 +252,11 @@ void OutputJobRunner::runImpl(const GraphicsOutputJob& job) {
   QSet<Board*> allBoards;
   QSet<std::shared_ptr<AssemblyVariant>> allAssemblyVariants;
   foreach (const GraphicsOutputJob::Content& content, job.getContent()) {
-    allBoards |= getBoards(content.boards, false).toSet();
+    const auto boards = getBoards(content.boards, false);
+    const auto assemblyVariants = getAssemblyVariants(content.assemblyVariants, false);
+    allBoards |= QSet<Board*>(boards.begin(), boards.end());
     allAssemblyVariants |=
-        getAssemblyVariants(content.assemblyVariants, false).toList().toSet();
+    	QSet<std::shared_ptr<AssemblyVariant>>(assemblyVariants.begin(), assemblyVariants.end());
   }
 
   // Determine output path.

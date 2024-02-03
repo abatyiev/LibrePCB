@@ -57,7 +57,8 @@ StepExport::~StepExport() noexcept {
 void StepExport::start(std::shared_ptr<SceneData3D> data, const FilePath& fp,
                        int finishDelayMs) noexcept {
   cancel();
-  mFuture = QtConcurrent::run(this, &StepExport::run, data, fp, finishDelayMs);
+//  mFuture = QtConcurrent::run(this, &StepExport::run, data, fp, finishDelayMs);
+  mFuture = QtConcurrent::run(&StepExport::run, this, data, fp, finishDelayMs);
 }
 
 bool StepExport::isBusy() const noexcept {

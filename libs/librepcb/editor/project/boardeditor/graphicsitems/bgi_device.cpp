@@ -244,7 +244,7 @@ void BGI_Device::updateBoardSide() noexcept {
 
   // Update circle layers.
   const CircleList& circles = mDevice.getLibFootprint().getCircles();
-  for (int i = 0; i < std::min(circles.count(), mCircleGraphicsItems.count());
+  for (int i = 0; i < std::min<int>(circles.count(), mCircleGraphicsItems.count());
        ++i) {
     mCircleGraphicsItems.at(i)->setLineLayer(
         getLayer(circles.at(i)->getLayer()));
@@ -258,7 +258,7 @@ void BGI_Device::updateBoardSide() noexcept {
 
   // Update polygon layers.
   const PolygonList& polygons = mDevice.getLibFootprint().getPolygons();
-  for (int i = 0; i < std::min(polygons.count(), mPolygonGraphicsItems.count());
+  for (int i = 0; i < std::min<int>(polygons.count(), mPolygonGraphicsItems.count());
        ++i) {
     mPolygonGraphicsItems.at(i)->setLineLayer(
         getLayer(polygons.at(i)->getLayer()));
@@ -276,7 +276,7 @@ void BGI_Device::updateBoardSide() noexcept {
 }
 
 void BGI_Device::updateHoleStopMaskOffsets() noexcept {
-  for (int i = 0; i < std::min(mDevice.getLibFootprint().getHoles().count(),
+  for (int i = 0; i < std::min<int>(mDevice.getLibFootprint().getHoles().count(),
                                mHoleGraphicsItems.count());
        ++i) {
     const auto hole = mDevice.getLibFootprint().getHoles().at(i);
@@ -291,7 +291,7 @@ void BGI_Device::updateHoleStopMaskOffsets() noexcept {
 void BGI_Device::updateZoneLayers() noexcept {
   const Transform transform(mDevice);
   const ZoneList& zones = mDevice.getLibFootprint().getZones();
-  for (int i = 0; i < std::min(zones.count(), mZoneGraphicsItems.count());
+  for (int i = 0; i < std::min<int>(zones.count(), mZoneGraphicsItems.count());
        ++i) {
     mZoneGraphicsItems.at(i)->setAllLayers(
         mDevice.getBoard().getCopperLayers());

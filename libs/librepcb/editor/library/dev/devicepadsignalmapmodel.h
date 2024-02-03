@@ -55,7 +55,7 @@ public:
 
   // Constructors / Destructor
   DevicePadSignalMapModel() = delete;
-  DevicePadSignalMapModel(const DevicePadSignalMapModel& other) noexcept;
+  DevicePadSignalMapModel(const DevicePadSignalMapModel& other) noexcept = default;
   explicit DevicePadSignalMapModel(QObject* parent = nullptr) noexcept;
   ~DevicePadSignalMapModel() noexcept;
 

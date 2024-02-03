@@ -88,8 +88,7 @@ TEST_F(ProjectTest, testUpgradeV01) {
   // Re-open project.
   ASSERT_TRUE(
       FileUtils::readFile(mProjectDir.getPathTo(".librepcb-project"))
-          .startsWith(Application::getFileFormatVersion().toStr().toUtf8() %
-                      "\n"));
+          .startsWith((Application::getFileFormatVersion().toStr() + QStringLiteral("\n")).toUtf8()));
   {
     ProjectLoader loader;
     std::unique_ptr<Project> project =

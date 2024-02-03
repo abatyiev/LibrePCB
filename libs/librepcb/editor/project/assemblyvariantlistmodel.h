@@ -59,7 +59,7 @@ public:
 
   // Constructors / Destructor
   AssemblyVariantListModel() = delete;
-  AssemblyVariantListModel(const AssemblyVariantListModel& other) noexcept;
+  AssemblyVariantListModel(const AssemblyVariantListModel& other) noexcept = default;
   explicit AssemblyVariantListModel(QObject* parent = nullptr) noexcept;
   ~AssemblyVariantListModel() noexcept;
 

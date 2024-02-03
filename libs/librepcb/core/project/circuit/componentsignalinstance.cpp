@@ -217,7 +217,7 @@ void ComponentSignalInstance::updatePadNames() noexcept {
       }
     }
   }
-  QStringList sortedNames = names.toList();
+  QStringList sortedNames(names.begin(), names.end());
   Toolbox::sortNumeric(sortedNames);
 
   if (sortedNames != mPadNames) {

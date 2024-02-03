@@ -49,7 +49,7 @@ class SortFilterProxyModel : public QSortFilterProxyModel {
 public:
   // Constructors / Destructor
   SortFilterProxyModel() = delete;
-  SortFilterProxyModel(const SortFilterProxyModel& other) noexcept;
+  SortFilterProxyModel(const SortFilterProxyModel& other) noexcept = default;
   explicit SortFilterProxyModel(QObject* parent = nullptr) noexcept;
   virtual ~SortFilterProxyModel() noexcept;
 

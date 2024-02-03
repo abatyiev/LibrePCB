@@ -162,7 +162,7 @@ const QFont& Application::getDefaultSansSerifFont() noexcept {
   auto create = []() {
     QFont font;
     font.setStyleStrategy(
-        QFont::StyleStrategy(QFont::OpenGLCompatible | QFont::PreferQuality));
+        QFont::StyleStrategy(QFont::PreferQuality));
     font.setStyleHint(QFont::SansSerif);
     font.setFamily("Noto Sans");
     return font;
@@ -176,7 +176,7 @@ const QFont& Application::getDefaultMonospaceFont() noexcept {
   auto create = []() {
     QFont font;
     font.setStyleStrategy(
-        QFont::StyleStrategy(QFont::OpenGLCompatible | QFont::PreferQuality));
+        QFont::StyleStrategy(QFont::PreferQuality));
     font.setStyleHint(QFont::TypeWriter);
     font.setFamily("Noto Sans Mono");
     return font;

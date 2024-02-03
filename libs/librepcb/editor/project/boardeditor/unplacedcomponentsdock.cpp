@@ -208,7 +208,7 @@ void UnplacedComponentsDock::updateComponentsList() noexcept {
                                     component->getParts(tl::nullopt).value(0));
       const QString value =
           AttributeSubstitutor::substitute(lookup("VALUE"), lookup)
-              .split("\n", QString::SkipEmptyParts)
+              .split("\n", Qt::SkipEmptyParts)
               .join("|");
       QString libCmpName = *component->getLibComponent().getNames().value(
           mProject.getLocaleOrder());

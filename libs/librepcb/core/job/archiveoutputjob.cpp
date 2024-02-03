@@ -74,7 +74,8 @@ QIcon ArchiveOutputJob::getTypeIcon() const noexcept {
 }
 
 QSet<Uuid> ArchiveOutputJob::getDependencies() const noexcept {
-  return mInputJobs.keys().toSet();
+  const auto keys = mInputJobs.keys();
+  return QSet<Uuid>(keys.begin(), keys.end());
 }
 
 /*******************************************************************************

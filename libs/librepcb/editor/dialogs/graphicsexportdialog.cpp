@@ -1022,7 +1022,7 @@ void GraphicsExportDialog::applySettings() noexcept {
   settings->setBackgroundColor(getBackgroundColor());
 
   // Update colors from list widget.
-  for (int i = 0; i < std::min(mUi->lstLayerColors->count(), mColors.count());
+  for (int i = 0; i < std::min<int>(mUi->lstLayerColors->count(), mColors.count());
        ++i) {
     QColor color =
         mUi->lstLayerColors->item(i)->data(Qt::DecorationRole).value<QColor>();
@@ -1040,15 +1040,15 @@ void GraphicsExportDialog::applySettings() noexcept {
   }
 
   // Update page content from tree view.
-  for (int i = 0; i < std::min(mUi->treeContent->topLevelItemCount(),
-                               mPageContentItems.count());
+  for (int i = 0; i < std::min<int>(mUi->treeContent->topLevelItemCount(),
+                                    mPageContentItems.count());
        ++i) {
     const QTreeWidgetItem* node = mUi->treeContent->topLevelItem(i);
     ContentItem& item = mPageContentItems[i];
     item.name = node->text(0);
     item.enabled = (node->checkState(0) == Qt::Checked);
     item.mirror = (node->checkState(1) == Qt::Checked);
-    for (int k = 0; k < std::min(node->childCount(), mColors.count()); ++k) {
+    for (int k = 0; k < std::min<int>(node->childCount(), mColors.count()); ++k) {
       const QTreeWidgetItem* child = node->child(k);
       const QString color = mColors.at(k).first;
       if (child->checkState(0) == Qt::Checked) {
@@ -1065,7 +1065,7 @@ void GraphicsExportDialog::applySettings() noexcept {
     QList<int> pageIndices;
     if (mUi->rbtnRangeCustom->isChecked()) {
       QStringList ranges =
-          mUi->edtPageRange->text().split(',', QString::SkipEmptyParts);
+          mUi->edtPageRange->text().split(',', Qt::SkipEmptyParts);
       foreach (const QString& range, ranges) {
         int start = qBound(1, range.split('-').first().trimmed().toInt(),
                            mInputPages.count());
@@ -1164,7 +1164,7 @@ void GraphicsExportDialog::startExport(bool toClipboard) noexcept {
       // Strip page number from the file path, if any.
       QString tmp = fp.toStr();
       tmp.chop(fp.getSuffix().length() + 1);
-      while ((!tmp.isEmpty()) && (tmp.at(tmp.length() - 1) == "1")) {
+      while ((!tmp.isEmpty()) && (tmp.at(tmp.length() - 1) == '1')) {
         tmp.chop(1);
       }
       fp.setPath(tmp % "." % fp.getSuffix());
